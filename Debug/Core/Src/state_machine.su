@@ -1,0 +1,6 @@
+../Drivers/CMSIS/Include/core_cm4.h:1938:34:__NVIC_SystemReset	4	static,ignoring_inline_asm
+../Core/Src/state_machine.c:18:13:get_system_state	4	static
+../Core/Src/state_machine.c:23:15:get_alert_level	4	static
+../Core/Src/state_machine.c:28:6:state_machine_toggle	4	static
+../Core/Src/state_machine.c:40:6:state_machine_reset	8	static
+../Core/Src/state_machine.c:47:6:state_machine_update	40	static

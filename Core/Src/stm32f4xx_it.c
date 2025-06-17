@@ -20,10 +20,26 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
+#include "timer.h"
+#include "state_machine.h"
+#include "led.h"
+#include "buzzer.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
+void EXTI15_10_IRQHandler(void) {
+    if (EXTI->PR & (1 << 13)) {
+        EXTI->PR |= (1 << 13);
+        state_machine_toggle();
+    }
+}
 
+void EXTI3_IRQHandler(void) {
+    if (EXTI->PR & (1 << 3)) {
+        EXTI->PR |= (1 << 3);
+        state_machine_reset();
+    }
+}
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
 
@@ -186,6 +202,9 @@ void SysTick_Handler(void)
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
+  timer_systick_callback();
+  buzzer_check();
+  led_check();
   /* USER CODE BEGIN SysTick_IRQn 1 */
 
   /* USER CODE END SysTick_IRQn 1 */

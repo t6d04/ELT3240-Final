@@ -1,0 +1,4 @@
+../Core/Src/gas_sensor.c:9:14:rs_from_adc	2
+../Core/Src/gas_sensor.c:17:6:gas_sensor_init	1
+../Core/Src/gas_sensor.c:22:6:gas_sensor_calibrate	2
+../Core/Src/gas_sensor.c:33:10:gas_sensor_read_ppm	2

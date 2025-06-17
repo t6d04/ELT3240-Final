@@ -1,0 +1,4 @@
+../Core/Src/gas_sensor.c:9:14:rs_from_adc	24	static
+../Core/Src/gas_sensor.c:17:6:gas_sensor_init	8	static
+../Core/Src/gas_sensor.c:22:6:gas_sensor_calibrate	24	static
+../Core/Src/gas_sensor.c:33:10:gas_sensor_read_ppm	32	static
