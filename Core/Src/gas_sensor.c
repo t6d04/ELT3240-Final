@@ -2,8 +2,8 @@
 #include "adc.h"
 #include <math.h>
 
-#define RL 10000.0f
-#define VCC 3.3f
+#define RL 20000.0f
+#define VCC 5.0f
 static float R0 = 10000.0f;
 
 static float rs_from_adc(uint16_t adc)

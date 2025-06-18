@@ -7,16 +7,20 @@ void gpio_init(void)
     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
     RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+    RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
+    RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
 
     // ===== MQ-5 Sensor: PA0 (Analog input) =====
     GPIOA->MODER &= ~(3 << (0 * 2));
     GPIOA->MODER |=  (0 << (0 * 2));
 
-    // ===== Relay: PA8 (Output) =====
-    GPIOA->MODER &= ~(3 << (8 * 2));
-    GPIOA->MODER |=  (1 << (8 * 2));
-    GPIOA->OTYPER &= ~(1 << 8);
-    GPIOA->OSPEEDR |= (3 << (8 * 2));
+    // ===== Relay: PB12 (Output) =====
+    GPIOB->MODER &= ~(3 << (12 * 2));
+    GPIOB->MODER |=  (1 << (12 * 2));
+
+    GPIOB->OTYPER &= ~(1 << 12);
+    GPIOB->OSPEEDR |= (3 << (12 * 2));
+    GPIOB->PUPDR &= ~(3 << (12 * 2));
 
     // ===== LED1: PB0 (Output) =====
     GPIOB->MODER &= ~(3 << (0 * 2));
@@ -33,16 +37,22 @@ void gpio_init(void)
     GPIOB->PUPDR &= ~(3 << (3 * 2));
     GPIOB->PUPDR |=  (1 << (3 * 2));
 
-    // ===== LCD I2C: PB6 (SCL), PB7 (SDA), AF4, Open-drain =====
-    GPIOB->MODER &= ~(3 << (6 * 2));
-    GPIOB->MODER |=  (2 << (6 * 2));
-    GPIOB->OTYPER |=  (1 << 6);
-    GPIOB->PUPDR |=  (1 << (6 * 2));
+    // ===== LCD I2C=====
+    GPIOB->MODER &= ~(3 << (8 * 2));
+    GPIOB->MODER |=  (2 << (8 * 2));
+    GPIOB->AFR[1] &= ~(0xF << ((8 - 8) * 4));
+    GPIOB->AFR[1] |=  (4 << ((8 - 8) * 4));
+    GPIOB->OTYPER |= (1 << 8);
+    GPIOB->PUPDR &= ~(3 << (8 * 2));
+    GPIOB->PUPDR |=  (1 << (8 * 2));
 
-    GPIOB->MODER &= ~(3 << (7 * 2));
-    GPIOB->MODER |=  (2 << (7 * 2));
-    GPIOB->OTYPER |=  (1 << 7);
-    GPIOB->PUPDR |=  (1 << (7 * 2));
+    GPIOB->MODER &= ~(3 << (9 * 2));
+    GPIOB->MODER |=  (2 << (9 * 2));
+    GPIOB->AFR[1] &= ~(0xF << ((9 - 8) * 4));
+    GPIOB->AFR[1] |=  (4 << ((9 - 8) * 4));
+    GPIOB->OTYPER |= (1 << 9);
+    GPIOB->PUPDR &= ~(3 << (9 * 2));
+    GPIOB->PUPDR |=  (1 << (9 * 2));
 
     // ===== Buzzer: PB10 (Output) =====
     GPIOB->MODER &= ~(3 << (10 * 2));
@@ -69,4 +79,12 @@ void gpio_init(void)
     GPIOC->MODER &= ~(3 << (13 * 2));
     GPIOC->PUPDR &= ~(3 << (13 * 2));
     GPIOC->PUPDR |=  (1 << (13 * 2));
+
+
+    // ===== UART PA9 (Output) =====
+    GPIOA->MODER &= ~(3 << (9 * 2));
+    GPIOA->MODER |=  (2 << (9 * 2));
+    GPIOA->AFR[1] &= ~(0xF << ((9 - 8) * 4));
+    GPIOA->AFR[1] |=  (7 << ((9 - 8) * 4));
+
 }

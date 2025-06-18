@@ -1,0 +1,2 @@
+../Core/Src/scheduler.c:10:6:scheduler_update	24	static
+../Core/Src/scheduler.c:19:6:send_data	80	static

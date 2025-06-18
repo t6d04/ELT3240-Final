@@ -2,25 +2,6 @@
 #include "i2c.h"
 
 void i2c2_init(void) {
-    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
-    RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
-
-    GPIOB->MODER &= ~(3 << (8 * 2));
-    GPIOB->MODER |=  (2 << (8 * 2));
-    GPIOB->AFR[1] &= ~(0xF << ((8 - 8) * 4));
-    GPIOB->AFR[1] |=  (4 << ((8 - 8) * 4));
-    GPIOB->OTYPER |= (1 << 8);
-    GPIOB->PUPDR &= ~(3 << (8 * 2));
-    GPIOB->PUPDR |=  (1 << (8 * 2));
-
-    GPIOB->MODER &= ~(3 << (9 * 2));
-    GPIOB->MODER |=  (2 << (9 * 2));
-    GPIOB->AFR[1] &= ~(0xF << ((9 - 8) * 4));
-    GPIOB->AFR[1] |=  (4 << ((9 - 8) * 4));
-    GPIOB->OTYPER |= (1 << 9);
-    GPIOB->PUPDR &= ~(3 << (9 * 2));
-    GPIOB->PUPDR |=  (1 << (9 * 2));
-
     I2C1->CR2 = 16;
     I2C1->CCR = 80;
     I2C1->TRISE = 17;

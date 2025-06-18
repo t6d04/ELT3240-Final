@@ -1,2 +1,2 @@
 ../Core/Src/i2c.c:4:6:i2c2_init	4	static
-../Core/Src/i2c.c:30:9:i2c2_check_address	16	static
+../Core/Src/i2c.c:11:9:i2c2_check_address	16	static

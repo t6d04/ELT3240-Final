@@ -1,11 +1,13 @@
+#include <stdio.h>
+#include "stm32f4xx.h"
 #include "state_machine.h"
 #include "led.h"
 #include "buzzer.h"
 #include "i2c.h"
 #include "lcd.h"
 #include "timer.h"
-#include <stdio.h>
-#include "stm32f4xx.h"
+#include "relay.h"
+
 
 static uint32_t lcd_last_update = 0;
 static uint8_t lcd_paused_displayed = 0;
@@ -53,6 +55,7 @@ void state_machine_update(uint16_t ppm)
 	    led_off_all();
 	    led_off(LED_POWER_PIN);
 	    buzzer_off();
+	    relay_off();
 	    if (!lcd_paused_displayed)
 		{
 	    	lcd_command(0x01);
@@ -101,7 +104,6 @@ void state_machine_update(uint16_t ppm)
 
         case GAS_HIGH:
             led_off_all();
-
 			if (now - led_danger_last_toggle >= 1000) {
 				led_danger_last_toggle = now;
 
@@ -119,6 +121,7 @@ void state_machine_update(uint16_t ppm)
         case GAS_DANGEROUS:
             led_off_all();
             buzzer_on(0);
+			relay_on();
 			if (now - led_danger_last_toggle >= 200) {
 				led_danger_last_toggle = now;
 

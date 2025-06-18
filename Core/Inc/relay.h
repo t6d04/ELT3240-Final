@@ -1,13 +1,11 @@
-/*
- * relay.h
- *
- *  Created on: Jun 16, 2025
- *      Author: namlp
- */
+#ifndef __RELAY_H
+#define __RELAY_H
 
-#ifndef INC_RELAY_H_
-#define INC_RELAY_H_
+#include <stdint.h>
 
+void relay_init(void);
+void relay_on(void);
+void relay_off(void);
+uint8_t relay_status(void);
 
-
-#endif /* INC_RELAY_H_ */
+#endif

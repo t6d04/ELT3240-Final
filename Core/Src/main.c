@@ -11,6 +11,8 @@
 #include "button.h"
 #include <stdio.h>
 #include "uart.h"
+#include "scheduler.h"
+#include "relay.h"
 
 int main(void){
 	timer_init();
@@ -26,11 +28,12 @@ int main(void){
     gas_sensor_init();
     gas_sensor_calibrate();
 
+
 	while(1){
 
 		uint16_t ppm = gas_sensor_read_ppm();
 		state_machine_update(ppm);
-
+		scheduler_update(ppm, get_alert_level());
 	}
 
 }

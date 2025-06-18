@@ -1,6 +1,4 @@
 Core/Src/state_machine.o: ../Core/Src/state_machine.c \
- ../Core/Inc/state_machine.h ../Core/Inc/led.h ../Core/Inc/buzzer.h \
- ../Core/Inc/i2c.h ../Core/Inc/lcd.h ../Core/Inc/timer.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h \
  ../Drivers/CMSIS/Include/core_cm4.h \
@@ -26,13 +24,10 @@ Core/Src/state_machine.o: ../Core/Src/state_machine.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-../Core/Inc/state_machine.h:
-../Core/Inc/led.h:
-../Core/Inc/buzzer.h:
-../Core/Inc/i2c.h:
-../Core/Inc/lcd.h:
-../Core/Inc/timer.h:
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ ../Core/Inc/state_machine.h ../Core/Inc/led.h ../Core/Inc/buzzer.h \
+ ../Core/Inc/i2c.h ../Core/Inc/lcd.h ../Core/Inc/timer.h \
+ ../Core/Inc/relay.h
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h:
 ../Drivers/CMSIS/Include/core_cm4.h:
@@ -59,3 +54,10 @@ Core/Src/state_machine.o: ../Core/Src/state_machine.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+../Core/Inc/state_machine.h:
+../Core/Inc/led.h:
+../Core/Inc/buzzer.h:
+../Core/Inc/i2c.h:
+../Core/Inc/lcd.h:
+../Core/Inc/timer.h:
+../Core/Inc/relay.h:
