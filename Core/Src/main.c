@@ -24,16 +24,18 @@ int main(void){
 
 	uart1_init();
 
-
     gas_sensor_init();
     gas_sensor_calibrate();
 
-
+//    led_on(LED_DANGER_PIN);
+//
 	while(1){
 
 		uint16_t ppm = gas_sensor_read_ppm();
 		state_machine_update(ppm);
-		scheduler_update(ppm, get_alert_level());
+		if(get_system_state() == 1){
+			scheduler_update(ppm, get_alert_level());
+		}
 	}
 
 }

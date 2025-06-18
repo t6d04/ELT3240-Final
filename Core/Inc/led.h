@@ -5,10 +5,10 @@
 
 #define LED_PORT GPIOC
 
-#define LED_POWER_PIN    0
-#define LED_SAFE_PIN     1
-#define LED_WARNING_PIN  2
-#define LED_DANGER_PIN   3
+//#define LED_POWER_PIN    0
+#define LED_BLUE    1
+#define LED_GREEN  	2
+#define LED_RED   	3
 
 void led_on(uint8_t pin);
 void led_off(uint8_t pin);

@@ -53,7 +53,7 @@ void state_machine_update(uint16_t ppm)
 	if (system_state == SYSTEM_STOPPED)
 	{
 	    led_off_all();
-	    led_off(LED_POWER_PIN);
+	    led_on(LED_BLUE);
 	    buzzer_off();
 	    relay_off();
 	    if (!lcd_paused_displayed)
@@ -66,7 +66,7 @@ void state_machine_update(uint16_t ppm)
 	}
 	else
 	{
-	    led_on(LED_POWER_PIN); // bật lại sau khi all_off
+	    led_off(LED_BLUE); // bật lại sau khi all_off
 	}
 
 	lcd_paused_displayed = 0;
@@ -92,26 +92,28 @@ void state_machine_update(uint16_t ppm)
     {
         case GAS_SAFE:
             led_off_all();
-            led_on(LED_SAFE_PIN);
+            led_on(LED_GREEN);
             buzzer_off();
             break;
 
         case GAS_LOW:
             led_off_all();
-            led_on(LED_WARNING_PIN);
+            led_on(LED_GREEN);
+            led_on(LED_BLUE);
             buzzer_off();
             break;
 
         case GAS_HIGH:
-            led_off_all();
+        	led_off(LED_BLUE);
+        	led_off(LED_GREEN);
 			if (now - led_danger_last_toggle >= 1000) {
 				led_danger_last_toggle = now;
 
 				if (led_danger_on) {
-					led_off(LED_DANGER_PIN);
+					led_off(LED_RED);
 					led_danger_on = 0;
 				} else {
-					led_on(LED_DANGER_PIN);
+					led_on(LED_RED);
 					led_danger_on = 1;
 				}
 			}
@@ -119,17 +121,18 @@ void state_machine_update(uint16_t ppm)
             break;
 
         case GAS_DANGEROUS:
-            led_off_all();
+        	led_off(LED_BLUE);
+        	led_off(LED_GREEN);
             buzzer_on(0);
 			relay_on();
 			if (now - led_danger_last_toggle >= 200) {
 				led_danger_last_toggle = now;
 
 				if (led_danger_on) {
-					led_off(LED_DANGER_PIN);
+					led_off(LED_RED);
 					led_danger_on = 0;
 				} else {
-					led_on(LED_DANGER_PIN);
+					led_on(LED_RED);
 					led_danger_on = 1;
 				}
 			}

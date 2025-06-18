@@ -11,10 +11,10 @@ typedef struct {
 } Led;
 
 static Led leds[] = {
-    {LED_POWER_PIN,   0, 0, 0, 0},
-    {LED_SAFE_PIN,    0, 0, 0, 0},
-    {LED_WARNING_PIN, 0, 0, 0, 0},
-    {LED_DANGER_PIN,  0, 0, 0, 0},
+//    {LED_POWER_PIN,   0, 0, 0, 0},
+    {LED_BLUE,    0, 0, 0, 0},
+    {LED_GREEN, 0, 0, 0, 0},
+    {LED_RED,  0, 0, 0, 0},
 };
 
 #define NUM_LEDS (sizeof(leds) / sizeof(leds[0]))
